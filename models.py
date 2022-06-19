@@ -1,5 +1,5 @@
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy_utils import EmailType
+from sqlalchemy_utils import EmailType, URLType
 from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
 from database import Base
@@ -15,7 +15,7 @@ class Community(Base):
     picture = Column(String)
     comments = relationship("Comment",backref="communities")
     contact = Column(String)
-
+    
 class Comment(Base):
     __tablename__ = "comments"
 

@@ -15,3 +15,6 @@ def create_community(db: Session, community: community_schemas.Community):
     db.commit()
     db.refresh(db_community)
     return db_community
+
+def get_community_by_id(db: Session, community_id: int):
+    return db.query(models.Community).filter(models.Community.id == int(community_id)).first()
