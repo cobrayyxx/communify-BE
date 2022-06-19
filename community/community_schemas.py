@@ -3,6 +3,7 @@ from typing import Union
 from pydantic import BaseModel
 from pydantic import BaseModel, Field, EmailStr
 from uuid import UUID, uuid4
+from comment.comment_schemas import Comment
 
 class Community(BaseModel):
     id: int = Field(None)
@@ -12,5 +13,6 @@ class Community(BaseModel):
     schedule:str = Field(None)
     picture:str = Field(None)
     contact:str = Field(None)
+    comments:list[Comment] = []
     class Config:
         orm_mode = True
