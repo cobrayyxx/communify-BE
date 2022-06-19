@@ -49,4 +49,3 @@ class Rating(Base):
     value = Column(Integer)
 
 
-
