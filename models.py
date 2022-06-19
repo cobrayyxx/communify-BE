@@ -22,7 +22,7 @@ class Comment(Base):
     id = Column(Integer, primary_key=True, index=True)
     content = Column(String)
     community_id = Column(Integer, ForeignKey('communities.id'))
-    creator_id = Column(Integer, ForeignKey('users.id'))
+    creator = Column(String)
     replies = relationship('Reply', backref='comments')
 
 

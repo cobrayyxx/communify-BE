@@ -8,8 +8,7 @@ class Comment(BaseModel):
     id: int = Field(None)
     content: str = Field(..., max_length=300)
     community_id: int = Field(...)
-    creator_id: int = Field(...)
+    creator: str = Field(...)
     replies: list[Reply] = []
-
     class Config:
         orm_mode = True

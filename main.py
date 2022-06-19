@@ -1,6 +1,6 @@
 from fastapi import Depends, FastAPI
 
-from sub_app1 import users
+from user import user_controller
 from community import community_controller
 from comment import comment_controller
 from reply import reply_controller
@@ -11,7 +11,7 @@ app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
 
-app.include_router(users.router)
+app.include_router(user_controller.router)
 app.include_router(community_controller.router)
 app.include_router(comment_controller.router)
 app.include_router(reply_controller.router)
