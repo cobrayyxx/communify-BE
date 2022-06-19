@@ -21,11 +21,8 @@ def create_community_controller(
     community: community_schemas.Community, db: Session = Depends(get_db), file:Optional[UploadFile] = File(None)
 ):
     print(file)
-    if file is not None:
-        result = cloudinary.uploader.upload(file.file, folder = 'waffle-hack-communify')
-        url = result.get('secure_url')
-    else:
-        url = None
+    result = cloudinary.uploader.upload(file.file, folder = 'waffle-hack-communify')
+    url = result.get('secure_url')
     community = jsonable_encoder(community)
     community['picture'] = url
     print(community)
