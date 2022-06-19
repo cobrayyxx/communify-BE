@@ -18,18 +18,9 @@ router = APIRouter(
 
 @router.post("/community/", response_model=community_schemas.Community)
 def create_community_controller(
-    community: community_schemas.Community, db: Session = Depends(get_db), file:Optional[UploadFile] = File(None)
+    community: community_schemas.Community, db: Session = Depends(get_db)
 ):
-    print(file)
-    result = cloudinary.uploader.upload(file.file, folder = 'waffle-hack-communify')
-    url = result.get('secure_url')
-    community = jsonable_encoder(community)
-    community['picture'] = url
-    print(community)
-    print(url)
     return community_repo.create_community(db=db, community=community)
-
-
 
 @router.get("/community/", response_model=list[community_schemas.Community])
 def read_communities(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
